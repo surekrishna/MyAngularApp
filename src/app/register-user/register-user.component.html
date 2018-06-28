@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="user-form">
+<form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm)" class="reg-form" novalidate> 
+    <div class="row">
+      <div class="col-md-4">
+          <div class="form-group">  
+              <label class="firstName">firstName:</label>
+                <input type="text" class="form-control" formControlName="firstName" maxlength="20"><br>                
+                <div *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                    <div class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('required')">firstName is required</div>
+                    <div class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('pattern')">Alphabets only allowed!</div>
+                </div>                
+            </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">  
+              <label class="center-block">lastName:</label>
+                <input type="text" class="form-control" formControlName="lastName" maxlength="20"><br>             
+                <div *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                    <div class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('required')">lastName is required</div>
+                    <div class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('pattern')">Alphabets only allowed!</div>
+                </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">  
+              <label class="center-block">emailAddress:</label>
+                <input type="text" class="form-control" formControlName="emailAddress"><br>              
+              <div class="alert alert-danger" *ngIf="registerForm.get('emailAddress').touched && registerForm.get('emailAddress').invalid">
+                <div *ngIf="registerForm.get('emailAddress').hasError('required')">emailAddress is required</div>
+                <div *ngIf="registerForm.get('emailAddress').hasError('email') && !registerForm.get('emailAddress').hasError('required')">Invalid emailAddress</div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+          <div class="form-group">  
+              <label class="center-block">phoneNumber:</label>
+                <input type="text" class="form-control" formControlName="phoneNumber" maxlength="10"><br>              
+                <div *ngIf="registerForm.get('phoneNumber').invalid && registerForm.get('phoneNumber').touched">
+                    <div class="alert alert-danger" *ngIf="registerForm.get('phoneNumber').hasError('required')">phoneNumber is required</div>
+                    <div class="alert alert-danger" *ngIf="registerForm.get('phoneNumber').hasError('pattern')">Numerics only allowed!</div>
+                </div>                
+          </div>    
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">  
+              <label class="center-block">zipCode:</label>
+                <input type="text" class="form-control" formControlName="zipCode" maxlength="5"><br>              
+                <div *ngIf="registerForm.get('zipCode').invalid && registerForm.get('zipCode').touched">
+                    <div class="alert alert-danger" *ngIf="registerForm.get('zipCode').hasError('required')">zipCode is required</div>
+                    <div class="alert alert-danger" *ngIf="registerForm.get('zipCode').hasError('pattern')">Numerics only allowed!</div>
+                </div> 
+          </div>    
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">  
+              <label class="center-block">city:</label>
+                <input type="text" class="form-control" formControlName="city"><br>              
+                <div *ngIf="registerForm.get('city').invalid && registerForm.get('city').touched">
+                    <div class="alert alert-danger" *ngIf="registerForm.get('city').hasError('required')">city is required</div>
+                    <div class="alert alert-danger" *ngIf="registerForm.get('city').hasError('pattern')">Alphabets only allowed!</div>
+                </div>                
+          </div>
+      </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-4">
+            <div class="form-group">  
+                    <label class="center-block">password:</label>
+                      <input type="password" class="form-control" formControlName="password" maxlength="16"><br>              
+                      <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                          <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError('required')">password is required</div>
+                          <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError('pattern')">password must be 8-16 chars including one number and special char!</div>
+                      </div>                
+                </div>
+    </div>
+    <div class="col-md-4">
+            <div class="form-group">  
+                    <label class="center-block">confirmPassword:</label>
+                      <input type="password" class="form-control" formControlName="confirmPassword" maxlength="16"><br>              
+                      <div *ngIf="registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched">
+                          <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassword').hasError('required')">confirmPassword is required</div>
+                          <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassword').hasError('pattern')">confirmPassword must be 8-16 chars including one number and special char!</div>
+                      </div>                
+                </div>
+    </div>   
+  </div>         
+  <div class="row">
+    <div class="col-md-11">              
+            <input type="submit" class="btn user-submit" value="Submit" [disabled]="registerForm.invalid">                         
+    </div>
+  </div>   
+</form>
+</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="login-form">
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm)" class="log-form" #myLoginForm="ngForm" novalidate> 
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">  
+                        <label class="center-block">emailAddress:</label>
+                        <input type="text" class="form-control" formControlName="emailAddress"><br> 
+                        <div class="alert alert-danger" *ngIf="loginForm.get('emailAddress').hasError('required') && myLoginForm.submitted">emailAddress is required</div>
+                        <div class="alert alert-danger" *ngIf="loginForm.get('emailAddress').hasError('email') && !loginForm.get('emailAddress').hasError('required') && myLoginForm.submitted">Invalid emailAddress</div>                 
+                    </div>
+                </div>
+            </div>          
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">  
+                        <label class="center-block">password:</label>
+                        <input type="password" class="form-control" formControlName="password" maxlength="16"><br>                                       
+                        <div class="alert alert-danger" *ngIf="loginForm.get('password').hasError('required') && myLoginForm.submitted">password is required</div>                                 
+                    </div>
+                </div>         
+            </div>         
+            <div class="row">
+                <div class="col-md-11">              
+                    <input type="submit" class="btn user-submit" value="Submit">      
+                </div>
+            </div>   
+      </form>
+    </div>
+</div>
